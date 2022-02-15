@@ -16,6 +16,9 @@ public class yahooMessenger extends Application {
 @Override
     public void start(Stage primaryStage) {
 
+
+
+
         // create a new text area
         TextArea ta = new TextArea();
 
@@ -27,7 +30,7 @@ public class yahooMessenger extends Application {
         new Thread(() -> {
             try {
                 // listen for and accept a connection
-                ServerSocket serverSocket = new ServerSocket(9000);
+                ServerSocket serverSocket = new ServerSocket(8000);
                 Platform.runLater(() ->
                         ta.appendText("Server started :"));
 
@@ -52,6 +55,11 @@ public class yahooMessenger extends Application {
                 e.printStackTrace();
             }
         }).start();
+
+
         }
+
+
+
 
 }

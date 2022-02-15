@@ -18,26 +18,28 @@ public class yahooClient extends Application {
     DataOutputStream toServer = null;
     DataInputStream fromServer = null;
 
+
+
     @Override
     public void start(Stage primaryStage) throws Exception {
 
         BorderPane paneForTextField = new BorderPane();
         paneForTextField.setPadding(new Insets(5, 5, 5, 5));
         paneForTextField.setStyle("-fx-border-color: green");
-        paneForTextField.setLeft(new Label("Enter a radius: "));
+        paneForTextField.setLeft(new Label("Send Message: "));
 
         TextField tf = new TextField();
-        tf.setAlignment(Pos.BOTTOM_RIGHT);
+        tf.setAlignment(Pos.TOP_LEFT);
         paneForTextField.setCenter(tf);
 
         BorderPane mainPane = new BorderPane();
 
         TextArea ta = new TextArea();
         mainPane.setCenter(new ScrollPane(ta));
-        mainPane.setTop(paneForTextField);
+        mainPane.setBottom(paneForTextField);
 
         Scene scene = new Scene(mainPane, 450, 200);
-        primaryStage.setTitle("Client");
+        primaryStage.setTitle("Jessica (pingme04)");
         primaryStage.setScene(scene);
         primaryStage.show();
 
@@ -68,4 +70,34 @@ public class yahooClient extends Application {
             ta.appendText(ex.toString() + '\n');
             }
         }
-    }
+       public static emoji(String emoji) {
+           // :) Happy
+           // :( Sad
+           // ;) Wink
+           // :D Big Emoji
+           // >:D< Hug
+           // :-/  Confused
+           // :x Love Sick
+           // :P tongue
+           // :-* Kiss
+           // =(( broken heart
+           // :-O surprise
+           // X( Angry
+           // :> Smug
+           // B-)
+           // :-$ whew!
+           //
+
+       }
+
+
+
+
+
+        }
+
+
+
+
+
+
