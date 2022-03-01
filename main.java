@@ -23,6 +23,7 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyListener;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
@@ -31,17 +32,21 @@ public class main extends Application {
     @Override
     public void start(Stage primaryStage) {
 
-            primaryStage.setTitle("Hello World");
+            primaryStage.setTitle("Game Room");
             Group root = new Group();
-            TextField tf = new TextField();
+            TextArea ta = new TextArea();
             TextArea userList = new TextArea();
             Scene scene = new Scene(root, 640, 480);
             TextArea ta2 = new TextArea();
             ta2.setEditable(false);
+            String name = "Chase";
 
             userList.setPrefSize(170, 300);
             userList.setLayoutX(460);
             userList.setLayoutY(20);
+            userList.setEditable(false);
+            userList.appendText(name + "\n");
+            userList.appendText("Tommy" + "\n");
 
 
 
@@ -55,12 +60,14 @@ public class main extends Application {
 
             Image image = new Image("C:\\Users\\Wojak\\Desktop\\The_GNU_logo.png"); // file extension has to be exact or crazy exception errors will run. Also helps to run this in admin mode.
 
-            tf.setPrefSize(340, 100); // resize the box itself
-            tf.setLayoutX(20); // x axis positioning
-            tf.setLayoutY(300); // y axis positioning
-            tf.setFont(new Font("Comic-Sans", 16));
-            tf.getText();
+            ta.setPrefSize(340, 140); // resize the box itself
+            ta.setLayoutX(20); // x axis positioning
+            ta.setLayoutY(320); // y axis positioning
+            ta.setFont(new Font("Comic-Sans", 16));
+            ta.getText();
 
+            ta2.setLayoutX(20);
+            ta2.setLayoutY(20);
             ta2.setPrefSize(320, 280);
 
 
@@ -80,17 +87,30 @@ public class main extends Application {
             sendBtn.setPrefSize(60, 60); // resize the box itself
             sendBtn.setLayoutX(370); // x axis positioning
             sendBtn.setLayoutY(300); // y axis positioning
+            ta.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                    @Override
+                    public void handle(KeyEvent j) {
+                            if(j.getCode().equals(KeyCode.ENTER)) {
+                                    String str = ta.getText();
+                                    // this will append text to the chat box above
+                                    ta2.appendText(name + ": " + str + "\n");
+                            }
+                    }
+            });
+
             sendBtn.setOnKeyPressed(new EventHandler<KeyEvent>() {
                     @Override
                     public void handle(KeyEvent k) {
                             if(k.getCode().equals(KeyCode.ENTER)){
-                                    String str = tf.getText();
+                                    String str = ta.getText();
                                     // this will append text to the chat box above
                                     ta2.appendText(str + "\n");
+
                             }
 
                     }
             });
+
 
 
             displayPic.setPrefSize(100,100);
@@ -99,7 +119,7 @@ public class main extends Application {
 
             root.getChildren().add(userList);
             root.getChildren().add(sendBtn);
-            root.getChildren().add(tf);
+            root.getChildren().add(ta);
             root.getChildren().add(displayPic);
             root.getChildren().add(imageView);
             //root.getChildren().add(ta2);
